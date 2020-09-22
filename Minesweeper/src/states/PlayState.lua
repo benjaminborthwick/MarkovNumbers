@@ -22,6 +22,11 @@ function PlayState:update()
         if mousePress[3] == 1 then
             self.tileMap[mouseTile].revealed = true
         end
+
+        -- if right click
+        if mousePress[3] == 2 and self.tileMap[mouseTile].revealed == false then
+            self.tileMap[mouseTile].flag = true
+        end
     end
 
 end
