@@ -16,7 +16,7 @@ function PlayState:update()
         local mouseTile = (mouseY - 1) * self.width + mouseX
 
         -- if left click
-        if mousePress[3] == 1 then
+        if mousePress[3] == 1 and not self.tileMap[mouseTile].flag then
             self:revealTile(self.tileMap[mouseTile])
         end
 
