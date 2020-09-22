@@ -20,7 +20,7 @@ function PlayState:update()
 
         -- if left click
         if mousePress[3] == 1 then
-            self.tileMap[mouseTile].revealed = true
+            self:revealTile(self.tileMap[mouseTile])
         end
 
         -- if right click
@@ -28,7 +28,21 @@ function PlayState:update()
             self.tileMap[mouseTile].flag = true
         end
     end
+end
 
+function PlayState:revealTile(tile)
+    tile.revealed = true
+    if tile.bomb then
+        tile.exploded = true
+    elseif tile.number == 0 then
+        for y = math.max(1, tile.y - 1), math.min(tile.y + 1, self.height) do
+            for x = math.max(1, tile.x - 1), math.min(tile.x + 1, self.width) do
+                if not self.tileMap[(y - 1) * self.width + x].revealed and not (y == tile.y and x == tile.x) then
+                    self:revealTile(self.tileMap[(y - 1) * self.width + x])
+                end
+            end
+        end
+    end
 end
 
 function PlayState:render()
