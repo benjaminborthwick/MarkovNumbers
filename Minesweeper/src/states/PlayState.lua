@@ -16,7 +16,7 @@ function PlayState:update()
         --syncing mouse position with grid
         local mouseX = 1 + math.floor(mousePress[1] / 32)
         local mouseY = 1 + math.floor(mousePress[2] / 32)
-        local mouseTile = (mouseY - 1) * 30 + mouseX
+        local mouseTile = (mouseY - 1) * self.width + mouseX
 
         -- if left click
         if mousePress[3] == 1 then

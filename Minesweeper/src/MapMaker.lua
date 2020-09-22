@@ -36,5 +36,21 @@ function MapMaker.generate(width, height, bombs)
         tiles[bombIndex].bomb = true
     end
 
+    --counting bombs around each tile
+    local bombCount
+    for k, tile in pairs(tiles) do
+        if not tile.bomb then
+            bombCount = 0
+            for y = math.max(1, tile.y - 1), math.min(tile.y + 1, height) do
+                for x = math.max(1, tile.x - 1), math.min(tile.x + 1, width) do
+                    if tiles[(y - 1) * width + x].bomb then
+                        bombCount = bombCount + 1
+                    end
+                end
+            end
+            tile.number = bombCount
+        end
+    end
+
     return tiles
 end

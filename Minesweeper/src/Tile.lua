@@ -19,7 +19,7 @@ function Tile:render()
         if self.bomb then
             love.graphics.draw(gSheet, gFrames['tiles'][6], (self.x - 1) * 32, (self.y - 1) * 32)
         else
-            love.graphics.draw(gSheet, gFrames['numbers'][1], (self.x - 1) * 32, (self.y - 1) * 32)
+            love.graphics.draw(gSheet, gFrames['numbers'][self.number + 1], (self.x - 1) * 32, (self.y - 1) * 32)
         end
     else
         love.graphics.draw(gSheet, gFrames['tiles'][1], (self.x - 1) * 32, (self.y - 1) * 32)
