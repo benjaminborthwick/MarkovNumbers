@@ -20,13 +20,14 @@ require 'src/constants'
 require 'src/MapMaker'
 require 'src/Tile'
 
-
+gFont = love.graphics.newFont('fonts/font.ttf', 64)
 gSheet = love.graphics.newImage('graphics/spritesheet.png')
 
 gFrames = {
     ['numbers'] = {},
     ['tiles'] = {}
 }
+
 local sheetCounter = 1
 for y = 0, 3 do
     for x = 0, 3 do

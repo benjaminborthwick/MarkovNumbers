@@ -1,13 +1,10 @@
 PlayState = Class{__includes = BaseState}
 
-function PlayState:init()
-    self.width = 30
-    self.height = 16
-    self.bombs = 99
-    self.tileMap = MapMaker.generate(self.width, self.height, self.bombs)
-end
-
-function PlayState:enter()
+function PlayState:enter(params)
+    self.width = params.width
+    self.height = params.height
+    self.bombs = params.bombs
+    self.tileMap = params.tileMap
 end
 
 function PlayState:update()
